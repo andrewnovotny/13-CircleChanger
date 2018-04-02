@@ -376,7 +376,7 @@ class CircleChanger(object):
             :rtype CircleChanger
         """
         ################################################################
-        # TODO: 6.
+        # DONE: 6.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_swallow   function (below).
         #   Third, implement and test this method.
@@ -386,7 +386,10 @@ class CircleChanger(object):
         #   the center and radius of the new CircleChanger.
         #   NO CREDIT if you use the distance formula here.
         ################################################################
-        center = self.circle.center.halfway_to(other_circle_changer.circle.center))
+        center = other_circle_changer.circle.center.halfway_to(self.circle.center)
+        radius = other_circle_changer.circle.center.get_distance_from(self.circle.center) / 2
+        set = self.colors + other_circle_changer.colors
+        return CircleChanger(center.x, center.y, radius, 'red', set)
 
     def change_color(self, index_of_color):
         """
@@ -408,12 +411,12 @@ class CircleChanger(object):
             :type index_of_color: int
         """
         ################################################################
-        # TODO: 7.
+        # DONE: 7.
         #   First, READ the doc-string (specification) above.
         #   Second, READ the   run_test_change_color   function (below).
         #   Third, implement and test this method.
         ################################################################
-
+        self.circle.fill_color = self.colors[index_of_color]
     def change_to_original_color(self):
         """
         What comes in:
