@@ -104,7 +104,7 @@ class CircleChanger(object):
         self.circle = rg.Circle(rg.Point(x, y), radius)
         self.circle.fill_color = fill_color
         self.colors = colors
-
+        self.original_color = fill_color
 
 
     def __repr__(self):
@@ -417,6 +417,8 @@ class CircleChanger(object):
         #   Third, implement and test this method.
         ################################################################
         self.circle.fill_color = self.colors[index_of_color]
+
+
     def change_to_original_color(self):
         """
         What comes in:
@@ -433,6 +435,8 @@ class CircleChanger(object):
         #   Second, READ the   run_test_change_to_original_color   function
         #   (below).  Third, implement and test this method.
         ################################################################
+        self.circle.fill_color = self.original_color
+
 
     def change_to_next_color_in_tuple(self):
         """
@@ -472,7 +476,12 @@ class CircleChanger(object):
         #   Second, READ the   run_test_change_to_next_color_in_tuple
         #   function (below).  Third, implement and test this method.
         ################################################################
-
+        length = len(self.colors)
+        if self.circle.fill_color in self.colors:
+            current = self.colors.index(self.circle.fill_color)
+            self.circle.fill_color = self.colors[(current + 1) % (length)]
+        else:
+            self.circle.fill_color = self.colors[0]
 
 ########################################################################
 # The TEST functions for the  CircleChanger  class begin here.
